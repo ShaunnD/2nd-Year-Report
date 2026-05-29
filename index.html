@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Belgium Campus — 2nd Year Marks</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ── Header ── -->
+  <header>
+    <div class="header-inner">
+      <div class="header-left">
+        <span class="header-eyebrow">Belgium Campus</span>
+        <h1>2nd Year Marks Tracker</h1>
+      </div>
+      <div class="header-right">
+        <div class="save-indicator" id="saveIndicator">
+          <span class="save-dot" id="saveDot"></span>
+          <span class="save-text" id="saveText">Saved</span>
+        </div>
+        <button class="btn-icon btn-reset" id="resetBtn" title="Reset all marks to blank">
+          &#8635; Reset
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ── Summary Cards ── -->
+    <section class="summary-section">
+      <div class="summary-grid">
+        <div class="summary-card">
+          <div class="summary-label">Semester 1</div>
+          <div class="summary-value" id="sem1Avg">—</div>
+          <div class="summary-sub">Average</div>
+        </div>
+        <div class="summary-card">
+          <div class="summary-label">Semester 2</div>
+          <div class="summary-value" id="sem2Avg">—</div>
+          <div class="summary-sub">Average</div>
+        </div>
+        <div class="summary-card summary-card--accent">
+          <div class="summary-label">Year Average</div>
+          <div class="summary-value" id="yearAvg">—</div>
+          <div class="summary-sub">Overall</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Tabs ── -->
+    <div class="tabs-bar">
+      <button class="tab-btn active" data-tab="sem1">Semester 1</button>
+      <button class="tab-btn" data-tab="sem2">Semester 2</button>
+    </div>
+
+    <!-- ── Semester 1 Grid ── -->
+    <div class="tab-panel" id="panelSem1">
+      <div class="subjects-grid" id="gridSem1"></div>
+    </div>
+
+    <!-- ── Semester 2 Grid ── -->
+    <div class="tab-panel hidden" id="panelSem2">
+      <div class="subjects-grid" id="gridSem2"></div>
+    </div>
+
+  </main>
+
+  <!-- ── Add Task Modal ── -->
+  <div class="modal-backdrop" id="modalBackdrop">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <h3 class="modal-title" id="modalTitle">Add Task</h3>
+      <div class="modal-body">
+        <div class="field-group">
+          <label for="inputTaskName">Task Name</label>
+          <input type="text" id="inputTaskName" placeholder="e.g. Assignment 2" autocomplete="off" />
+        </div>
+        <div class="field-group">
+          <label for="inputTaskWeight">Weight (%)</label>
+          <input type="number" id="inputTaskWeight" placeholder="e.g. 25" min="1" max="100" step="1" />
+          <span class="field-hint" id="weightHint"></span>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn--ghost" id="modalCancel">Cancel</button>
+        <button class="btn btn--primary" id="modalConfirm">Add Task</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Reset Confirm Modal ── -->
+  <div class="modal-backdrop" id="resetBackdrop">
+    <div class="modal" role="dialog" aria-modal="true">
+      <h3 class="modal-title">Reset All Marks?</h3>
+      <p class="modal-desc">This will clear every mark you've entered. Your subject and task structure will be kept.</p>
+      <div class="modal-footer">
+        <button class="btn btn--ghost" id="resetCancel">Cancel</button>
+        <button class="btn btn--danger" id="resetConfirm">Yes, Reset</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
